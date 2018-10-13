@@ -1,0 +1,22 @@
+.cardContainer{
+    padding: 0;
+    margin: 3% 0 3% 0;
+}
+
+.cardContainer:hover{
+    background: rgb(197, 194, 194);
+}
+
+
+.classRed{
+    color:red;
+}
+.classYellow{
+    color:yellow;
+}
+.classBlue{
+    color:blue;
+}
+.classGreen{
+    color:green;
+}

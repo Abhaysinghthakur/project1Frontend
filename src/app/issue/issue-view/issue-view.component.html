@@ -1,0 +1,50 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" [routerLink]="['/dashboard']">Dashboard</a>
+</nav>
+<div class="container">
+  <div class="row" *ngIf="data">
+    <ul class="list-group p-5" style="width:100%;">
+      <li class="list-group-item list-group-item-dark">
+        <span style="font-size:1.3em" class="letterClass">{{data.title}}</span>
+        <button type="button" [ngClass]="{'btn btn-danger':data.status == 'Backlog','btn btn-warning':data.status == 'In-progress','btn btn-info':data.status == 'In-test','btn btn-success':data.status == 'Done'}"
+          style="float:right;font-size:small">{{data.status}}</button>
+      </li>
+      <li class="list-group-item list-group-item-light" [innerHtml]="data.description"></li>
+      <li class="list-group-item list-group-item-light"><b>Reported By:</b> {{data.by}}</li>
+      <li class="list-group-item list-group-item-light"><b>Assigned By:</b> {{data.assignedToName}}</li>
+      <li class="list-group-item list-group-item-light">
+        <button type="button" class="btn btn-secondary" style="float:right" [routerLink]="['/edit/'+data.issueId]">edit</button>
+        
+        <button type="button" class="btn btn-secondary" style="float:right;margin-right: 2%" (click)="addToWatcherList()">
+          <i class="fa fa-eye" aria-hidden="true"></i>
+          Watch</button>
+        <span><b>Created On:</b> "{{data.createdOn | date:"short"}}"</span>
+      </li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <ul class="list-group" style="width:100%;">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Comment here</span>
+          </div>
+          <textarea class="form-control" aria-label="With textarea" [(ngModel)]="comment" placeholder="Enter Comment here...."></textarea>
+          <button class="btn btn-secoundry" style="float:Right" (click)="makeComment()">comment</button>
+        </div>
+        <span *ngIf="commentData">
+          <span *ngFor="let comments of commentData">
+            <li class="list-group-item list-group-item-light"><b>{{comments.by}}</b><br>
+            {{comments.description}}
+            <br>
+            <span style="font-size:smaller">{{comments.createdOn | date:"short"}}</span>
+            </li>
+          </span>
+        </span>
+        <span *ngIf="!commentData">
+          <li class="list-group-item list-group-item-light">Be the first one to comment on this issue</li>
+        </span>
+      </ul>
+    </div>
+  </div>
+</div>

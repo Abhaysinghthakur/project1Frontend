@@ -1,0 +1,69 @@
+.containerNav{
+    align-items: center;
+    justify-content: space-around;
+    margin: 0 !important;
+    border: 0 !important;
+    padding: 0 !important;
+}
+
+.noMargin{
+    margin: 0 !important;
+    border: 0 !important;
+    padding: 0 !important;
+    text-align: center;
+}
+
+.noMargin::first-letter{
+    text-transform: capitalize;
+}
+
+.noMargin2{
+    margin: 0 !important;
+    border: 0 !important;
+    padding: 0 0 0 5% !important;
+}
+
+.noMargin2::first-letter{
+    text-transform: capitalize;
+}
+
+.sideNav{
+    height: 8vh;
+    width: 100%;
+    border: 1px 0 1px 0 white solid;
+}
+
+.sideNav:hover{
+    height: 9vh;
+    width: 100%;
+    transition: linear;
+    background: #1d1e1f;
+    transition-timing-function: linear 2s;
+}
+
+.sideItem{
+    color:whitesmoke;
+}
+
+.backgroungColor{
+    background: transparent;
+    cursor: pointer;
+}
+
+.navTitle{
+    border-radius: 100%;
+    line-height: 1em;
+    padding: 1em;
+    text-align: center;
+    margin: 0em;
+    width: 2em;
+    height: 3em;
+    float: left;
+    text-transform: uppercase;
+    background: #96c2c9;
+}
+
+.containerIssues{
+    height: 100vh;
+    overflow-y: scroll;
+}

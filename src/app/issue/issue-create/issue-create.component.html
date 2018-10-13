@@ -1,0 +1,38 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" [routerLink]="['/dashboard']">DashBoard</a>
+</nav>
+<div class="container">
+  <div class="row p-5" style="text-align:left">
+    <div class="col-md-12">
+      <form #createIssueForm="ngForm" (ngSubmit)="createIssue()">
+        <div class="form-group">
+          <label>Issue Title</label>
+          <input type="text" name="issueTitle" [(ngModel)]="issueTitle" #title="ngModel" class="form-control"
+            placeholder="Enter issue Title" required>
+        </div>
+        <div [hidden]="title.valid || title.pristine" class="alert alert-danger">
+          Issue Title is required
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+            <app-ngx-editor [placeholder]="'Enter Description here...'" [spellcheck]="true" name="issueDescription" [(ngModel)]="issueDescription" style="height:20vh" required></app-ngx-editor>
+        </div>
+        <div class="form-group">
+          <label>Status</label>
+          <select [(ngModel)]="issueStatus" #category="ngModel" name="issueStatus" class="form-control" id="category"
+            required>
+            <option *ngFor="let category of possibleStatus" [value]="category">{{category}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+            <label>Assign To</label>
+            <select [(ngModel)]="assginedTo" #category="ngModel" name="assginedTo" class="form-control" id="Assgin"
+              required>
+              <option *ngFor="let name of users" [value]="name.userId">{{name.firstName}} {{name.lastName}}</option>
+            </select>
+          </div>
+        <button type="submit" class="btn btn-default" [disabled]="!createIssueForm.form.valid">Post the issue</button>
+      </form>
+    </div>
+  </div>
+</div>

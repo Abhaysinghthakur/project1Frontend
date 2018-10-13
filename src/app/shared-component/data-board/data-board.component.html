@@ -1,0 +1,69 @@
+<div class="row">
+  <div class=" columnContainer">
+    <div class="columnTitle">Backlogs</div>
+    <span *ngFor="let x of backlogs">
+      <div class="card cardContainer">
+        <div class="card-body">
+          <div class="card-title">
+            <span class="status" style="color:red">{{x.status}}</span>
+            <span class="cardTitle">{{x.title}}</span>
+          </div>
+          <p class="card-text" [innerHtml]="x.description"></p>
+          <p>By:{{x.by}}<br><span >On:{{x.createdOn | date:"shortDate"}}</span></p>
+          <a [routerLink]="['/view/'+x.issueId]" class="card-link">view</a>
+        </div>
+      </div>
+    </span>
+  </div>
+
+  <div class=" columnContainer">
+    <div class="columnTitle">In-progress</div>
+    <span *ngFor="let x of inProgress">
+      <div class="card cardContainer">
+        <div class="card-body">
+          <div class="card-title">
+            <span class="status" style="color:yellow">{{x.status}}</span>
+            <span class="cardTitle">{{x.title}}</span>
+          </div>
+          <p class="card-text" [innerHtml]="x.description"></p>
+          <p>By:{{x.by}}<br><span >On:{{x.createdOn | date:"shortDate"}}</span></p>
+          <a [routerLink]="['/view/'+x.issueId]" class="card-link">view</a>
+        </div>
+      </div>
+    </span>
+  </div>
+
+  <div class=" columnContainer">
+    <div class="columnTitle">In-test</div>
+    <span *ngFor="let x of inTest">
+      <div class="card cardContainer">
+        <div class="card-body">
+          <div class="card-title">
+            <span class="status" style="color:blue">{{x.status}}</span>
+            <span class="cardTitle">{{x.title}}</span>
+          </div>
+          <p class="card-text" [innerHtml]="x.description"></p>
+          <p>By:{{x.by}}<br><span >On:{{x.createdOn | date:"shortDate"}}</span></p>
+          <a [routerLink]="['/view/'+x.issueId]" class="card-link">view</a>
+        </div>
+      </div>
+    </span>
+  </div>
+
+  <div class=" columnContainer">
+    <div class="columnTitle">Done</div>
+    <span *ngFor="let x of done">
+      <div class="card cardContainer">
+        <div class="card-body">
+          <div class="card-title">
+            <span class="status" style="color:green">{{x.status}}</span>
+            <span class="cardTitle">{{x.title}}</span>
+          </div>
+          <p class="card-text"[innerHtml]="x.description"></p>
+          <p>By:{{x.by}}<br><span >On:{{x.createdOn | date:"shortDate"}}</span></p>
+          <a [routerLink]="['/view/'+x.issueId]" class="card-link">view</a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>

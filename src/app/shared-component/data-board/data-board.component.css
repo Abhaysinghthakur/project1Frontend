@@ -1,0 +1,41 @@
+.date{
+    float: right;
+}
+
+.status{
+    float: right;
+    text-align: center;
+}
+
+.cardTitle{
+    font-size: 1.3em;
+    text-align: center;
+}
+
+.cardContainer{
+    box-shadow: 0 0 5px 5px #888;
+    width: 15vw;
+    padding: 0;
+    border: 0;
+    margin: 3% 0 3% 0;
+}
+
+.cardContainer:hover{
+    width: 15.2vw;
+    background: rgb(197, 194, 194);
+}
+
+.columnContainer{
+    background: lightgray;
+    border-radius: 5%;
+    width: 17vw;
+    padding: 1vw;
+    margin: 0 0.5vw 0 0.5vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.columnTitle{
+    font-size: 0.8em;
+    color: rgb(119, 117, 117);
+}

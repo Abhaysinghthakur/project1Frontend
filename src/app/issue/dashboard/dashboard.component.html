@@ -1,0 +1,109 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2 containerNav bg-dark rounded">
+            <div class="sideItem p-3 row borderClass">
+                <div class="navTitle col-3">
+                    {{firstChar}}
+                </div>
+                <div class="col-9 noMargin">
+                    {{userName}}<br>
+                    Dashboard
+                </div>
+            </div>
+            <div class="sideNav col-12">
+                <div class="sideItem">
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                    <button class="noMargin2 backgroungColor btn-dark" (click)="home()"> Home</button>
+                </div>
+            </div>
+            <div class="sideNav col-12">
+                <div class="sideItem">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    <button class="noMargin2 backgroungColor btn-dark" type="button" data-toggle="collapse" data-target="#collapseExample"
+                        aria-expanded="false" aria-controls="collapseExample">Search</button>
+                </div>
+            </div>
+            <div class="collapse" id="collapseExample">
+                <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2"
+                    (keydown)="searchIssue($event)" [(ngModel)]="searchData">
+            </div>
+            <div class="sideNav col-12">
+                <div class="sideItem">
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                    <button class="noMargin2 backgroungColor btn-dark" [routerLink]="['/create']"> create</button>
+                </div>
+            </div>
+            <div class="sideNav col-12">
+                <div class="sideItem">
+                    <i class="fa fa-flag-o" aria-hidden="true"></i>
+                    <button class="noMargin2 backgroungColor btn-dark  dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false" (click)="getNotifications()">
+                        Notification's
+                        <span class="badge badge-light" *ngIf="watcherList">
+                            <span *ngIf="watcherList.data[0].notificationCount > 0">{{watcherList.data[0].notificationCount}}
+                            </span>
+                        </span>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <span *ngIf="notificationData">
+                                <span *ngFor="let x of notificationData">
+                                    <a class="dropdown-item" [routerLink]="['/view/'+x.issueId]">{{x.description}}</a>
+                                    <div class="dropdown-divider"></div>
+                                </span>
+                                <a class="dropdown-item" style="text-align:center"><u>see all</u></a>
+                            </span>
+                            <span *ngIf="!notificationData">
+                                <a class="dropdown-item"> No Notification Present </a>
+                            </span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+            <div class="sideNav col-12">
+                <div class="sideItem">
+                    <i class="fa fa-eye" aria-hidden="true"></i>
+                    <button class="noMargin2 backgroungColor btn-dark" (click)="issuesWatching()"> Watching</button>
+                </div>
+            </div>
+            <div class="sideNav col-12">
+                <div class="sideItem">
+                    <i class="fa fa-caret-square-o-left" aria-hidden="true"></i>
+                    <button class="noMargin2 backgroungColor btn-dark" (click)="functionBacklog()"> Backlog</button>
+                </div>
+            </div>
+            <div class="sideNav col-12">
+                <div class="sideItem">
+                    <i class="fa fa-spinner" aria-hidden="true"></i>
+                    <button class="noMargin2 backgroungColor btn-dark" (click)="functionInprogess()"> In-progress</button>
+                </div>
+            </div>
+            <div class="sideNav col-12">
+                <div class="sideItem">
+                    <i class="fa fa-file-text" aria-hidden="true"></i>
+                    <button class="noMargin2 backgroungColor btn-dark" (click)="functionIntest()"> In-test</button>
+                </div>
+            </div>
+            <div class="sideNav col-12">
+                <div class="sideItem">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                    <button class="noMargin2 backgroungColor btn-dark" (click)="functionDone()"> Done</button>
+                </div>
+            </div>
+            <div class="sideNav col-12">
+                <div class="sideItem">
+                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                    <button class="noMargin2 backgroungColor btn-dark" (click)="logout()"> Log-Out</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-10 containerIssues" style="padding:5%">
+            <span *ngIf="someIssueData">
+                <span *ngIf="toggler">
+                    <data-board [backlogs]="backlogs" [inProgress]="inProgress" [inTest]="inTest" [done]="done"></data-board>
+                </span>
+                <span *ngIf="!toggler">
+                    <single-data-board [data]="someIssueData"></single-data-board>
+                </span>
+            </span>
+        </div>
+    </div>
+</div>
