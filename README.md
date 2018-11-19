@@ -1,3 +1,8 @@
+Front end code for a issue tracking tool which is made using Angular 6.
+refer problem statement here.
+https://s3-ap-southeast-1.amazonaws.com/edwisor-india-bucket/projects/web/web03/Web030103-Issue-Tracking-Tool.pdf
+
+
 # ProjectFrontEnd
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.2.
